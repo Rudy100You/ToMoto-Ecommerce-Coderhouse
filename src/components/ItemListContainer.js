@@ -1,10 +1,11 @@
 import React from 'react'
 import Container from '@mui/material/Container'
+import ItemList from './ItemList'
 
-const ItemListContainer = (props) => {
+const ItemListContainer = ({items}) => {
   return (
     <Container maxWidth="xl">
-      {props.greetings}
+      <ItemList itemList= {items}></ItemList>
     </Container>
       
   )

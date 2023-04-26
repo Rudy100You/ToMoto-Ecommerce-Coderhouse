@@ -9,12 +9,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
+import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import CartWidget from "./CartWidget";
+import { Link, NavLink } from "react-router-dom";
 
-const pages = ["Productos", "Ofertas", "Cotizador"];
-
-const Navbar = () => {
+const Navbar = ({ categories }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -30,12 +29,14 @@ const Navbar = () => {
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <TwoWheelerIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            <TwoWheelerIcon
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            />
             <Typography
               variant="h6"
               noWrap
-              component="a"
-              href="/"
+              component={Link}
+              to={"/"}
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
@@ -78,19 +79,26 @@ const Navbar = () => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                {categories.map((category) => (
+                  <MenuItem
+                    key={category.id}
+                    component={NavLink}
+                    to={`/categories/${category.id}`}
+                    onClick={handleCloseNavMenu}
+                  >
+                    <Typography textAlign="center">{category.name}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            <TwoWheelerIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+            <TwoWheelerIcon
+              sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            />
             <Typography
               variant="h5"
               noWrap
-              component="a"
-              href=""
+              component={Link}
+              to={"/"}
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
@@ -105,20 +113,21 @@ const Navbar = () => {
               ToMoto
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
+              {categories.map((category) => (
                 <Button
-                  key={page}
+                  component={NavLink}
+                  to={`/categories/${category.id}`}
+                  key={category.id}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  {page}
+                  {category.name}
                 </Button>
               ))}
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
-              
-              <CartWidget/>
+              <CartWidget />
             </Box>
           </Toolbar>
         </Container>

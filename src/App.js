@@ -1,14 +1,24 @@
 import "./App.css";
-import ItemListContainer from "./components/ItemListContainer";
-import Box from '@mui/material/Box'
 import Navbar from "./components/Navbar";
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Category from "./components/Category";
+import Main from "./components/Main";
+import {items, categories} from "./data/MockData";
+import ItemDetail from "./components/ItemDetail";
 function App() {
   return (
-    <Box sx={{width:"100%"}}>
-       <Navbar />
-      <ItemListContainer greetings={"Hola este es un mensaje de prueba para la primera entrega"}/>
-    </Box>
+    <BrowserRouter>
+      <Navbar categories={categories} />
+      <Routes >
+        <Route exact path="/" element={<Main items={items}></Main>}></Route>
+        <Route
+          exact
+          path="/categories/:categoryId"
+          element={<Category items={items} />}
+        ></Route>
+        <Route exact path="/items/:itemId" element= {<ItemDetail/>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
