@@ -23,7 +23,7 @@ const ItemDetail = () => {
     };
   }, [itemId]);
 
-  const currentItem = items.find((item) => (item.id = itemId));
+  const currentItem = items.find((item) => (item.id == itemId));
 
   return (
     <Card sx={{ maxWidth: 345, maxHeight: 630 , margin:auto, marginTop: "5%"}}>

@@ -1,5 +1,4 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
-import { border } from "@mui/system";
 import { NavLink } from "react-router-dom";
 
 export default ({item}) =>{
