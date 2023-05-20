@@ -1,11 +1,13 @@
-import { Box } from "@mui/material"
-import ItemListContainer from "./ItemListContainer"
+import { Box, Container } from "@mui/material"
+import ItemListContainer from "./ItemList/ItemListContainer"
+import { useContext } from "react"
+import { AppDataContext } from "../context/AppDataContext"
 
-const Main = ({items})=>{
-    
-     return <Box sx={{ width: "100%", marginTop: "5%"}}>
+const Main = ()=>{
+    let items = useContext(AppDataContext).getAllItems()
+     return <Container sx={{margin:"5%", width:"100%"}}>
                   <ItemListContainer items={items}/>
-                </Box>
+                </Container>
 
 }
 export default Main;

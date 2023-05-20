@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,10 +10,14 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
-import CartWidget from "./CartWidget";
-import { Link, NavLink } from "react-router-dom";
+import CartWidget from "./CartWidget/CartWidget";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AppDataContext } from "../context/AppDataContext";
 
-const Navbar = ({ categories }) => {
+const Navbar = () => {
+  const navigate = useNavigate()
+  const categories = useContext(AppDataContext).getAllCategories();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -23,6 +27,11 @@ const Navbar = ({ categories }) => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const handleClickOnCart = (e)=>{
+    e.preventDefault()
+    navigate("/cart")
+  }
 
   return (
     <nav>
@@ -79,14 +88,14 @@ const Navbar = ({ categories }) => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {categories.map((category) => (
+                {categories.map(category => (
                   <MenuItem
-                    key={category.id}
+                    key={category}
                     component={NavLink}
-                    to={`/categories/${category.id}`}
+                    to={`/categories/${category}`}
                     onClick={handleCloseNavMenu}
                   >
-                    <Typography textAlign="center">{category.name}</Typography>
+                    <Typography textAlign="center">{category}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -113,21 +122,23 @@ const Navbar = ({ categories }) => {
               ToMoto
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {categories.map((category) => (
+              {categories.map(category => (
                 <Button
                   component={NavLink}
-                  to={`/categories/${category.id}`}
-                  key={category.id}
+                  to={`/categories/${category}`}
+                  key={category}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  {category.name}
+                  {category}
                 </Button>
               ))}
             </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <CartWidget />
+            <Box sx={{ flexGrow: 0 } }component={NavLink}
+                  to={`/cart`}>
+              <CartWidget></CartWidget>
+              
             </Box>
           </Toolbar>
         </Container>

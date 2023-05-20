@@ -5,7 +5,7 @@ const MockData = {
       name: "Benelli TRK 502",
       price: 7200.0,
       photoSrc: "/img/benelli_trk_502.jpg",
-      categoryId: 3,
+      category: "Alta Gama",
       stock: 5,
       desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede."
     },
@@ -14,7 +14,7 @@ const MockData = {
       name: "Honda Tornado XR 250",
       price: 6100.0,
       photoSrc: "/img/honda_tornado_xr_250.jpg",
-      categoryId: 0,
+      category: "Motocross",
       stock: 3,
       desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede."
 
@@ -24,7 +24,7 @@ const MockData = {
       name: "Yamaha Tenere 250",
       price: 5300.0,
       photoSrc: "/img/yamaha_tenere_250.jpg",
-      categoryId: 3,
+      category: "Alta Gama",
       stock: 1,
       desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede."
     },
@@ -33,17 +33,11 @@ const MockData = {
       name: "LISM 3000W High Speed Mid Motor",
       price: 5431.58,
       photoSrc: "/img/LISM_3000W_High_Speed_Mid_Motor.jpg",
-      categoryId: 2,
+      category: "Electricos",
       stock: 0,
       desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede."
     },
-  ],
-  categories: [
-    { id: 0, name: "Motocross" },
-    { id: 1, name: "Cuatriciclos" },
-    { id: 2, name: "Electricos" },
-    { id: 3, name: "Alta Gama" },
-  ],
+  ]
 };
 
 export default MockData;
